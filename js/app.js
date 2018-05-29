@@ -57,9 +57,14 @@ document.addEventListener('click', function(e) {
 
 document.addEventListener('click', function(e) {
   let targetElement = document.getElementsByClassName('open');
-  if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false){
+  function waitFunction() {
     targetElement[0].classList.remove('show');
     targetElement[1].classList.remove('show');
     targetElement[0].classList.remove('open');
     targetElement[0].classList.remove('open');
+  }
+  if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false){
+    setTimeout(waitFunction, 2000)
+    targetElement[0].classList.add('show');
+    targetElement[1].classList.add('show');
   }});
