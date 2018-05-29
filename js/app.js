@@ -46,13 +46,20 @@ for (let x = 0; x < 16; x++) {
     revealedCards.classList.toggle('show');
   })};
 
-  document.addEventListener('click', function(e) {
-    let targetElement = document.getElementsByClassName('open');
-    if (targetElement.length === 2 // && targetElement[0] targetElement[1] blah blah //
-    ){
-      targetElement[0].classList.add('match');
-      targetElement[1].classList.add('match');
-      targetElement[0].classList.remove('open');
-      targetElement[0].classList.remove('open');
-    }
-  });
+document.addEventListener('click', function(e) {
+  let targetElement = document.getElementsByClassName('open');
+  if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1])){
+    targetElement[0].classList.add('match');
+    targetElement[1].classList.add('match');
+    targetElement[0].classList.remove('open');
+    targetElement[0].classList.remove('open');
+  }});
+
+document.addEventListener('click', function(e) {
+  let targetElement = document.getElementsByClassName('open');
+  if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false){
+    targetElement[0].classList.remove('show');
+    targetElement[1].classList.remove('show');
+    targetElement[0].classList.remove('open');
+    targetElement[0].classList.remove('open');
+  }});
