@@ -40,7 +40,8 @@ function shuffle(array) {
  */
 
 let cards = document.getElementsByClassName('card');
-
+let numberOfMoves = 0;
+let list = []
 
 for (let x = 0; x < 16; x++) {
   let revealedCards = cards[x]
@@ -54,8 +55,11 @@ document.addEventListener('click', function(e) {
   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1])){
     targetElement[0].classList.add('match');
     targetElement[1].classList.add('match');
-    targetElement[0].classList.remove('open');
-    targetElement[0].classList.remove('open');
+    if (targetElement[0].classList.contains('match')) {
+      numberOfMoves += 1;
+      targetElement[0].classList.remove('open');
+      targetElement[0].classList.remove('open');
+    }
   }});
 
 document.addEventListener('click', function(e) {
@@ -74,4 +78,17 @@ document.addEventListener('click', function(e) {
     targetElement[1].classList.add('show');
     targetElement[0].classList.add('mismatch');
     targetElement[1].classList.add('mismatch');
-  }});
+  }
+  if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false && targetElement[0].classList.contains('mismatch')) {
+    numberOfMoves += 1;
+  }
+});
+
+  function youDidIt() {
+    alert('You did it in ' + numberOfMoves + ' moves!');
+  }
+  document.addEventListener('click', function(e) {
+    if (document.getElementsByClassName('match').length === 16) {
+      setTimeout(youDidIt, 1000);
+    }
+  })
