@@ -3,12 +3,12 @@ let cards = document.getElementsByClassName('card');
 let numberOfMoves = 0;
 let plurality = 'Moves';
 let singularity = 'Move';
-var list = document.querySelector('.deck');
+var HTMLarray = document.querySelector('.deck');
 
 // shuffle function
-function shuffle(list) {
-for (i = list.children.length; i >= 0; i--) {
-    list.appendChild(list.children[Math.random() * i | 0]);
+function shuffle(HTMLarray) {
+for (i = HTMLarray.children.length; i >= 0; i--) {
+    HTMLarray.appendChild(HTMLarray.children[Math.random() * i | 0]);
   };
 }
 
@@ -76,14 +76,8 @@ document.addEventListener('click', function(e) {
   // updates to either 'move' or 'moves' depending on plurality again
   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false && targetElement[0].classList.contains('mismatch')) {
     numberOfMoves += 1;
-    document.getElementById('moves').innerHTML = numberOfMoves;
-    if (numberOfMoves === 1){
-      document.getElementById('plurality').innerHTML = singularity;
-    } else {
-      document.getElementById('plurality').innerHTML = plurality;
-    };
+    plural();
   }});
-
 // game completed alert function and event listener
 function youDidIt() {
   alert('You did it in ' + numberOfMoves + ' moves!');
@@ -100,11 +94,15 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
     each.className = 'card';
   }
   numberOfMoves = 0;
+  plural();
+  shuffle(HTMLarray);
+});
+// changes 'moves' to 'move' when the numberOfMoves === 1
+function plural() {
   document.getElementById('moves').innerHTML = numberOfMoves;
   if (numberOfMoves === 1){
     document.getElementById('plurality').innerHTML = singularity;
   } else {
     document.getElementById('plurality').innerHTML = plurality;
-  };
-  shuffle(list);
-});
+  }
+};
