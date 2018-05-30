@@ -4,6 +4,7 @@ let numberOfMoves = 0;
 let plurality = 'Moves';
 let singularity = 'Move';
 let HTMLarray = document.querySelector('.deck');
+let star = document.getElementsByClassName('fa fa-star')
 
 //timer
 let minutesLabel = document.getElementById("minutes");
@@ -47,8 +48,9 @@ document.addEventListener('click', function(e) {
   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1])){
     targetElement[0].classList.add('match');
     targetElement[1].classList.add('match');
+    numberOfMoves += 1;
+    stars();
     if (targetElement[0].classList.contains('match')) {
-      numberOfMoves += 1;
       targetElement[0].classList.remove('open');
       targetElement[0].classList.remove('open');
     }
@@ -60,28 +62,18 @@ document.addEventListener('click', function(e) {
         each.classList.remove('open');
       }
     };
-    // updates to either 'move' or 'moves' depending on plurality
-    document.getElementById('moves').innerHTML = numberOfMoves;
-    if (numberOfMoves === 1){
-      document.getElementById('plurality').innerHTML = singularity;
-    } else {
-      document.getElementById('plurality').innerHTML = plurality;
-    };
+    plural();
   }});
 
 // if two cards are clicked that don't match
 document.addEventListener('click', function(e) {
   let targetElement = document.getElementsByClassName('open');
   function waitFunction() {
-    targetElement[0].classList.remove('show');
-    targetElement[1].classList.remove('show');
-    targetElement[0].classList.remove('mismatch');
-    targetElement[1].classList.remove('mismatch');
-    targetElement[0].classList.remove('open');
-    targetElement[0].classList.remove('open');
+    targetElement[0].className = 'card';
+    targetElement[0].className = 'card';
   }
   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false){
-    setTimeout(waitFunction, 2000);
+    setTimeout(waitFunction, 1000);
     targetElement[0].classList.add('show');
     targetElement[1].classList.add('show');
     targetElement[0].classList.add('mismatch');
@@ -90,16 +82,16 @@ document.addEventListener('click', function(e) {
   if (document.getElementsByClassName('open').length > 2 || document.getElementsByClassName('mismatch').length > 2) {
     let holdingArray = Array.from(document.getElementsByClassName('open'));
     for (each of holdingArray) {
-      each.classList.remove('show');
-      each.classList.remove('mismatch');
-      each.classList.remove('open');
+      each.className = 'card';
     }
   };
   // updates to either 'move' or 'moves' depending on plurality again
   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false && targetElement[0].classList.contains('mismatch')) {
     numberOfMoves += 1;
     plural();
+    stars();
   }});
+
 // game completed alert function and event listener
 function youDidIt() {
   alert('You did it in ' + numberOfMoves + ' moves!');
@@ -109,7 +101,8 @@ document.addEventListener('click', function(e) {
   if (document.getElementsByClassName('match').length === 16) {
     setTimeout(youDidIt, 1000);
   }});
-// resets the grid
+
+// resets the grid & stars
 document.getElementById('restartButton').addEventListener('click', function(e) {
   let holdingArray = Array.from(document.getElementsByClassName('card'));
   for (each of holdingArray) {
@@ -118,6 +111,9 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
   numberOfMoves = 0;
   plural();
   shuffle(HTMLarray);
+  while (star.length < 3) {
+    document.querySelector('.fa-star').insertAdjacentHTML('afterend', '<li><i class="fa fa-star"></i></li>');
+  }
 });
 // changes 'moves' to 'move' when the numberOfMoves === 1
 function plural() {
@@ -128,3 +124,12 @@ function plural() {
     document.getElementById('plurality').innerHTML = plurality;
   }
 };
+//removes stars based on numberOfMoves
+function stars() {
+  if (numberOfMoves === 14) {
+    star[0].remove();
+  }
+  if (numberOfMoves === 20) {
+    star[0].remove();
+  }
+}
