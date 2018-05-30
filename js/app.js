@@ -3,8 +3,30 @@ let cards = document.getElementsByClassName('card');
 let numberOfMoves = 0;
 let plurality = 'Moves';
 let singularity = 'Move';
-var HTMLarray = document.querySelector('.deck');
+let HTMLarray = document.querySelector('.deck');
 
+//timer
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+
+HTMLarray.addEventListener('click', function() {
+  setInterval(setTime, 1000);
+  function setTime() {
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+  function pad(val) {
+    let valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
+}, {once:true});
 // shuffle function
 function shuffle(HTMLarray) {
 for (i = HTMLarray.children.length; i >= 0; i--) {

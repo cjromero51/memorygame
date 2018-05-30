@@ -111,3 +111,9 @@ h1 {
     float: right;
     cursor: pointer;
 }
+#plurality {
+  margin-right: 1em;
+}
+#moves {
+  margin-left: 1em;
+}
