@@ -36,6 +36,7 @@ document.addEventListener('click', function(e) {
       targetElement[0].classList.remove('open');
       targetElement[0].classList.remove('open');
     }
+    // if more than 2 cards are selected, prevent flipping and turn all unmatched cards facedown
     if (document.getElementsByClassName('open').length > 2 || document.getElementsByClassName('mismatch').length > 2) {
       let holdingArray = Array.from(document.getElementsByClassName('open'));
       for (each of holdingArray) {
@@ -98,10 +99,17 @@ document.addEventListener('click', function(e) {
   if (document.getElementsByClassName('match').length === 16) {
     setTimeout(youDidIt, 1000);
   }});
-// if (document.getElementsByClassName('open').length > 2 || document.getElementsByClassName('mismatch').length > 2) {
-//   let holdingArray = Array.from(document.getElementsByClassName('open'));
-//   for (each of holdingArray) {
-//     each.classList.remove('open');
-//     each.classList.remove('mismatch');
-//   }
-// };
+// resets the grid
+document.getElementById('restartButton').addEventListener('click', function(e) {
+  let holdingArray = Array.from(document.getElementsByClassName('card'));
+  for (each of holdingArray) {
+    each.className = 'card';
+  }
+  numberOfMoves = 0;
+  document.getElementById('moves').innerHTML = numberOfMoves;
+  if (numberOfMoves === 1){
+    document.getElementById('plurality').innerHTML = singularity;
+  } else {
+    document.getElementById('plurality').innerHTML = plurality;
+  };
+});
