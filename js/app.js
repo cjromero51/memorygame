@@ -112,7 +112,7 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
   plural();
   shuffle(HTMLarray);
   while (star.length < 3) {
-    document.querySelector('.fa-star').insertAdjacentHTML('afterend', '<li><i class="fa fa-star"></i></li>');
+    document.querySelector('.fa-star').insertAdjacentHTML('afterend', ' <li><i class="fa fa-star"></i></li>');
   }
 });
 // changes 'moves' to 'move' when the numberOfMoves === 1
