@@ -34,6 +34,7 @@ allCards.forEach(function(card) {
           ) {
             faceupArray[0].classList.add("mismatch");
             faceupArray[1].classList.add("mismatch");
+            plural();
             setTimeout(function() {
               faceupArray[0].classList.remove("show");
               faceupArray[0].classList.remove("open");
@@ -53,7 +54,9 @@ allCards.forEach(function(card) {
             faceupArray[0].classList.add("match");
             faceupArray[1].classList.add("complete");
             faceupArray[1].classList.add("match");
-
+            faceupArray = [];
+            currentFaceupCards = 0;
+            plural();
           }
         }
       }
