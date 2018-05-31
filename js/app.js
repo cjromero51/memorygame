@@ -81,28 +81,45 @@ allCards.forEach(function(card) {
 });
 
 // timer
+window.onload = function() {
+  let seconds = 00;
+  let minutes = 00;
+  let secondsHTML = document.getElementById('seconds');
+  let minutesHTML = document.getElementById('minutes');
+  let beginTimer = document.querySelector(".deck");
+  const resetTimer = document.getElementById('restartButton');
+  let interval ;
 
-
-HTMLarray.addEventListener('click', function() {
-    setInterval(setTime, 1000);
-
-    function setTime() {
-        ++totalSeconds;
-        secondsLabel.innerHTML = pad(totalSeconds % 60);
-        minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+  beginTimer.onclick = function() {
+    clearInterval(interval);
+    interval = setInterval(startClock,1000);
+  }
+  resetTimer.onclick = function() {
+    clearInterval(interval);
+    seconds = '00';
+    minutes = '00';
+    secondsHTML.innerHTML = seconds;
+    minutesHTML.innerHTML = minutes;
+  }
+  function startClock () {
+    seconds++;
+    if (seconds < 10) {
+      secondsHTML.innerHTML = '0' + seconds;
     }
-
-    function pad(val) {
-        let valString = val + "";
-        if (valString.length < 2) {
-            return "0" + valString;
-        } else {
-            return valString;
-        }
+    if (seconds > 10) {
+      secondsHTML.innerHTML = seconds;
     }
-}, {
-    once: true
-});
+    if (seconds > 59) {
+      minutes++;
+      minutesHTML.innerHTML = '0' + minutes;
+      seconds = 0;
+      secondsHTML.innerHTML = '0' + seconds;
+    }
+    if (minutes > 10) {
+      minutesHTML.innerHTML = minutes;
+    }
+  }
+};
 // shuffle function
 function shuffle(HTMLarray) {
     for (i = HTMLarray.children.length; i >= 0; i--) {
