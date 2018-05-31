@@ -45,12 +45,15 @@ allCards.forEach(function(card) {
               currentFaceupCards = 0;
             }, 1000);
           } else {
-            faceupArray[0].classlist.add("complete","match");
-            faceupArray[1].classlist.add("complete","match");
             faceupArray[0].classList.remove("open");
-            faceupArray[1].classList.remove("open");
             faceupArray[0].classList.remove("show");
+            faceupArray[1].classList.remove("open");
             faceupArray[1].classList.remove("show");
+            faceupArray[0].classList.add("complete");
+            faceupArray[0].classList.add("match");
+            faceupArray[1].classList.add("complete");
+            faceupArray[1].classList.add("match");
+
           }
         }
       }
