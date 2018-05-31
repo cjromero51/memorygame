@@ -94,6 +94,11 @@ window.onload = function() {
     clearInterval(interval);
     interval = setInterval(startClock,1000);
   }
+  HTMLarray.addEventListener('click', function() {
+    if (cardCounter.length === 8) {
+      clearInterval(interval);
+    }
+  });
   resetTimer.onclick = function() {
     clearInterval(interval);
     seconds = '00';
