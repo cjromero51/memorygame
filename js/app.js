@@ -1,13 +1,18 @@
 let cards = document.getElementsByClassName("card");
-let array = document.getElementsByClassName("card");
-let numberOfMoves = 0;
-let plurality = "Moves";
-let singularity = "Move";
 const HTMLarray = document.querySelector(".deck");
-let star = document.getElementsByClassName("fa fa-star");
 let currentFaceupCards = 0;
 let faceupArray = [];
 const allCards = document.querySelectorAll(".card");
+// move counter variables
+let numberOfMoves = 0;
+let moves = document.querySelector('#moves');
+let plurality = "Moves";
+let singularity = "Move";
+let star = document.getElementsByClassName("fa fa-star");
+// timer variables
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
 
 allCards.forEach(function(card) {
   card.addEventListener("click", function() {
@@ -34,6 +39,9 @@ allCards.forEach(function(card) {
           ) {
             faceupArray[0].classList.add("mismatch");
             faceupArray[1].classList.add("mismatch");
+            numberOfMoves++
+            moves.innerHTML = numberOfMoves;
+            stars();
             plural();
             setTimeout(function() {
               faceupArray[0].classList.remove("show");
@@ -56,6 +64,9 @@ allCards.forEach(function(card) {
             faceupArray[1].classList.add("match");
             faceupArray = [];
             currentFaceupCards = 0;
+            numberOfMoves++
+            moves.innerHTML = numberOfMoves;
+            stars();
             plural();
           }
         }
@@ -64,53 +75,8 @@ allCards.forEach(function(card) {
     })
   });
 
+// timer
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//timer
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
 
 HTMLarray.addEventListener('click', function() {
   setInterval(setTime, 1000);
@@ -155,9 +121,9 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
   numberOfMoves = 0;
   plural();
   shuffle(HTMLarray);
-  while (star.length < 3) {
-    document.querySelector('.fa-star').insertAdjacentHTML('afterend', ' <li><i class="fa fa-star"></i></li>');
-  }
+    for (var i = 0; i < 3; i++){
+      star[i].style.color = 'black';
+};
 });
 // changes 'moves' to 'move' when the numberOfMoves === 1
 function plural() {
@@ -170,69 +136,10 @@ function plural() {
 };
 //removes stars based on numberOfMoves
 function stars() {
-  if (numberOfMoves === 14) {
-    star[0].remove();
+  if (numberOfMoves === 2) {
+    star[2].style.color = '#ccc';
   }
   if (numberOfMoves === 20) {
-    star[0].remove();
+    star[1].style.color = '#ccc';
   }
 }
-
-
-// // old
-// // applies addEventListener to all cards and adds classes when clicked
-// for (let x = 0; x < 16; x++) {
-//   let revealedCards = cards[x]
-//   revealedCards.addEventListener('click', function(event) {
-//     revealedCards.classList.add('open');
-//     revealedCards.classList.add('show');
-//   })};
-// // if two cards are clicked that match
-// document.addEventListener('click', function(e) {
-//   let targetElement = document.getElementsByClassName('open');
-//   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1])){
-//     targetElement[0].classList.add('match');
-//     targetElement[1].classList.add('match');
-//     numberOfMoves += 1;
-//     stars();
-//     if (targetElement[0].classList.contains('match')) {
-//       targetElement[0].classList.remove('open');
-//       targetElement[0].classList.remove('open');
-//     }
-//     // if more than 2 cards are selected, prevent flipping and turn all unmatched cards facedown
-//     if (document.getElementsByClassName('open').length > 2 || document.getElementsByClassName('mismatch').length > 2) {
-//       let holdingArray = Array.from(document.getElementsByClassName('open'));
-//       for (each of holdingArray) {
-//         each.classList.remove('show');
-//         each.classList.remove('open');
-//       }
-//     };
-//     plural();
-//   }});
-//
-// // if two cards are clicked that don't match
-// document.addEventListener('click', function(e) {
-//   let targetElement = document.getElementsByClassName('open');
-//   function waitFunction() {
-//     targetElement[0].className = 'card';
-//     targetElement[0].className = 'card';
-//   }
-//   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false){
-//     setTimeout(waitFunction, 750);
-//     targetElement[0].classList.add('show');
-//     targetElement[1].classList.add('show');
-//     targetElement[0].classList.add('mismatch');
-//     targetElement[1].classList.add('mismatch');
-//   }
-//   if (document.getElementsByClassName('open').length > 2 || document.getElementsByClassName('mismatch').length > 2) {
-//     let holdingArray = Array.from(document.getElementsByClassName('open'));
-//     for (each of holdingArray) {
-//       each.className = 'card';
-//     }
-//   };
-//   // updates to either 'move' or 'moves' depending on plurality again
-//   if (targetElement.length === 2  && targetElement[0].childNodes[1].isEqualNode(targetElement[1].childNodes[1]) == false && targetElement[0].classList.contains('mismatch')) {
-//     numberOfMoves += 1;
-//     plural();
-//     stars();
-  // }});
