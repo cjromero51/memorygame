@@ -76,7 +76,12 @@ h1 {
   transition-duration: 0.5s;
   font-size: 33px;
 }
-
+.deck .card.complete {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transition-duration: 0.5s;
+  font-size: 33px;
+}
 .deck .card.match {
     cursor: default;
     background: #02ccba;
