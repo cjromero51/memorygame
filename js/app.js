@@ -110,7 +110,7 @@ window.onload = function() {
         clearInterval(interval);
         interval = setInterval(startClock, 1000);
     }
-    HTMLarray.addEventListener('click', function() {
+    document.addEventListener('click', function() {
         if (cardCounter.length === 8) {
             clearInterval(interval);
         }
@@ -156,8 +156,10 @@ function youDidIt() {
 
 HTMLarray.addEventListener('click', function(e) {
     if (cardCounter.length === 8) {
-        cardCounter = 0;
-        setTimeout(youDidIt, 2500);
+        setTimeout(function () {
+          youDidIt();
+          cardCounter = 0;
+        }, 2500);
 
     }
 });
