@@ -11,6 +11,7 @@ const singularity = "Move";
 let star = document.getElementsByClassName("fa fa-star");
 let cardCounter = [];
 let counter = 0;
+let timeouts = [];
 
 allCards.forEach(function(card) {
     card.addEventListener("click", function() {
@@ -40,11 +41,11 @@ allCards.forEach(function(card) {
                         moves.innerHTML = numberOfMoves;
                         stars();
                         plural();
-                        setTimeout(function() {
+                        timeouts.push(setTimeout(function() {
                             faceupArray[0].classList.add("animate");
                             faceupArray[1].classList.add("animate");
-                        }, 1500)
-                        setTimeout(function() {
+                        }, 1500))
+                        timeouts.push(setTimeout(function() {
                             faceupArray[0].classList.remove("show");
                             faceupArray[0].classList.remove("animate");
                             faceupArray[0].classList.remove("open");
@@ -55,11 +56,11 @@ allCards.forEach(function(card) {
                             faceupArray[1].classList.remove("mismatch");
                             faceupArray = [];
                             currentFaceupCards = 0;
-                        }, 1800);
+                        }, 1800));
                     } else {
                         counter++
                         cardCounter.push(counter);
-                        setTimeout(function() {
+                        timeouts.push(setTimeout(function() {
                             faceupArray[0].classList.remove("open");
                             faceupArray[0].classList.remove("show");
                             faceupArray[1].classList.remove("open");
@@ -74,15 +75,15 @@ allCards.forEach(function(card) {
                             moves.innerHTML = numberOfMoves;
                             stars();
                             plural();
-                        }, 1000);
-                        setTimeout(function() {
+                        }, 1000));
+                        timeouts.push(setTimeout(function() {
                             faceupArray[0].classList.add("deanimation");
                             faceupArray[1].classList.add("deanimation");
                             faceupArray[0].classList.remove("animation");
                             faceupArray[1].classList.remove("animation");
                             faceupArray = [];
                             currentFaceupCards = 0;
-                        }, 1750);
+                        }, 1750));
                     }
                 }
             }
@@ -167,6 +168,9 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
     let holdingArray = Array.from(document.getElementsByClassName('card'));
     for (each of holdingArray) {
         each.className = 'card';
+    }
+    for (var i = 0; i < timeouts.length; i++) {
+      clearTimeout(timeouts[i]);
     }
     faceupArray = [];
     currentFaceupCards = 0;
