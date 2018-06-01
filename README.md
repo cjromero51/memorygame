@@ -14,5 +14,5 @@ Upon loading the game, 16 cards will appear face-down.  The goal of the game is 
  - No more than two unmatched cards can be selected at a time.
  - The reset arrow at the top turns all cards face-down, resets the timer, and shuffles the deck.
 ### Project Dependencies
-[Awesome Font](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css)
+[Awesome Font](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css)\
 [Coda Font](https://fonts.googleapis.com/css?family=Coda)
