@@ -2,7 +2,7 @@
 
 ## Project Preview
 ### Downloading the Game
-The game can be cloned from GitHub with this [Address](https://github.com/cjromero51/memorygame.git) or vit direct zip [Download](https://github.com/cjromero51/memorygame/archive/overhaul.zip).
+The game can be cloned from GitHub with this [Address](https://github.com/cjromero51/memorygame.git) or via direct zip [Download](https://github.com/cjromero51/memorygame/archive/overhaul.zip).
 ### How to Play
 Upon loading the game, 16 cards will appear face-down.  The goal of the game is to click and match the icons on the cards in as few moves and little time as possible.
 #### Scoring:
