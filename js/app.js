@@ -47,16 +47,23 @@ allCards.forEach(function(card) {
                         stars();
                         plural();
                         setTimeout(function() {
+                          faceupArray[0].classList.add("animate");
+                          faceupArray[1].classList.add("animate");
+                        }, 1500)
+                        setTimeout(function() {
                             faceupArray[0].classList.remove("show");
+                            faceupArray[0].classList.remove("animate");
                             faceupArray[0].classList.remove("open");
                             faceupArray[0].classList.remove("mismatch");
+                            faceupArray[1].classList.remove("animate");
                             faceupArray[1].classList.remove("show");
                             faceupArray[1].classList.remove("open");
                             faceupArray[1].classList.remove("mismatch");
                             faceupArray = [];
                             currentFaceupCards = 0;
-                        }, 1000);
+                        }, 1800);
                     } else {
+                        setTimeout(function() {
                         faceupArray[0].classList.remove("open");
                         faceupArray[0].classList.remove("show");
                         faceupArray[1].classList.remove("open");
@@ -65,14 +72,23 @@ allCards.forEach(function(card) {
                         faceupArray[0].classList.add("match");
                         faceupArray[1].classList.add("complete");
                         faceupArray[1].classList.add("match");
-                        faceupArray = [];
-                        currentFaceupCards = 0;
+                        faceupArray[0].classList.add("animation");
+                        faceupArray[1].classList.add("animation");
                         numberOfMoves++
                         moves.innerHTML = numberOfMoves;
                         cardCounter.push(counter);
                         counter++
                         stars();
                         plural();
+                      }, 1000);
+                        setTimeout(function() {
+                          faceupArray[0].classList.add("deanimation");
+                          faceupArray[1].classList.add("deanimation");
+                          faceupArray[0].classList.remove("animation");
+                          faceupArray[1].classList.remove("animation");
+                          faceupArray = [];
+                          currentFaceupCards = 0;
+                        }, 1750);
                     }
                 }
             }
