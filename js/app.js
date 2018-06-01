@@ -82,48 +82,49 @@ allCards.forEach(function(card) {
 
 // timer
 window.onload = function() {
-  let seconds = 00;
-  let minutes = 00;
-  let secondsHTML = document.getElementById('seconds');
-  let minutesHTML = document.getElementById('minutes');
-  let beginTimer = document.querySelector(".deck");
-  const resetTimer = document.getElementById('restartButton');
-  let interval ;
+    let seconds = 00;
+    let minutes = 00;
+    let secondsHTML = document.getElementById('seconds');
+    let minutesHTML = document.getElementById('minutes');
+    let beginTimer = document.querySelector(".deck");
+    const resetTimer = document.getElementById('restartButton');
+    let interval;
 
-  beginTimer.onclick = function() {
-    clearInterval(interval);
-    interval = setInterval(startClock,1000);
-  }
-  HTMLarray.addEventListener('click', function() {
-    if (cardCounter.length === 8) {
-      clearInterval(interval);
+    beginTimer.onclick = function() {
+        clearInterval(interval);
+        interval = setInterval(startClock, 1000);
     }
-  });
-  resetTimer.onclick = function() {
-    clearInterval(interval);
-    seconds = '00';
-    minutes = '00';
-    secondsHTML.innerHTML = seconds;
-    minutesHTML.innerHTML = minutes;
-  }
-  function startClock () {
-    seconds++;
-    if (seconds < 10) {
-      secondsHTML.innerHTML = '0' + seconds;
+    HTMLarray.addEventListener('click', function() {
+        if (cardCounter.length === 8) {
+            clearInterval(interval);
+        }
+    });
+    resetTimer.onclick = function() {
+        clearInterval(interval);
+        seconds = '00';
+        minutes = '00';
+        secondsHTML.innerHTML = seconds;
+        minutesHTML.innerHTML = minutes;
     }
-    if (seconds > 10) {
-      secondsHTML.innerHTML = seconds;
+
+    function startClock() {
+        seconds++;
+        if (seconds < 10) {
+            secondsHTML.innerHTML = '0' + seconds;
+        }
+        if (seconds > 10) {
+            secondsHTML.innerHTML = seconds;
+        }
+        if (seconds > 59) {
+            minutes++;
+            minutesHTML.innerHTML = '0' + minutes;
+            seconds = 0;
+            secondsHTML.innerHTML = '0' + seconds;
+        }
+        if (minutes > 10) {
+            minutesHTML.innerHTML = minutes;
+        }
     }
-    if (seconds > 59) {
-      minutes++;
-      minutesHTML.innerHTML = '0' + minutes;
-      seconds = 0;
-      secondsHTML.innerHTML = '0' + seconds;
-    }
-    if (minutes > 10) {
-      minutesHTML.innerHTML = minutes;
-    }
-  }
 };
 // shuffle function
 function shuffle(HTMLarray) {
@@ -134,12 +135,14 @@ function shuffle(HTMLarray) {
 
 // game completed alert function and event listener
 function youDidIt() {
-    alert('You did it in ' + numberOfMoves + ' moves!');
+    alert('You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!');
 };
 
 document.addEventListener('click', function(e) {
     if (cardCounter.length === 8) {
+        cardCounter = 0;
         setTimeout(youDidIt, 1000);
+
     }
 });
 
