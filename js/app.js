@@ -170,6 +170,8 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
     for (each of holdingArray) {
         each.className = 'card';
     }
+    faceupArray = [];
+    currentFaceupCards = 0;
     numberOfMoves = 0;
     cardCounter = [];
     counter = 0;
