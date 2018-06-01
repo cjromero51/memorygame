@@ -6,24 +6,19 @@ const allCards = document.querySelectorAll(".card");
 // move counter variables
 let numberOfMoves = 0;
 let moves = document.querySelector('#moves');
-let plurality = "Moves";
-let singularity = "Move";
+const plurality = "Moves";
+const singularity = "Move";
 let star = document.getElementsByClassName("fa fa-star");
 let cardCounter = [];
 let counter = 0;
-// timer variables
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
-
 
 allCards.forEach(function(card) {
     card.addEventListener("click", function() {
         if (currentFaceupCards < 2) {
             if (
                 card.classList.contains("open") == false &&
-                    card.classList.contains("show") == false &&
-                    card.classList.contains("match") == false
+                card.classList.contains("show") == false &&
+                card.classList.contains("match") == false
             ) {
                 currentFaceupCards++;
                 card.classList.add("open", "show");
@@ -46,8 +41,8 @@ allCards.forEach(function(card) {
                         stars();
                         plural();
                         setTimeout(function() {
-                          faceupArray[0].classList.add("animate");
-                          faceupArray[1].classList.add("animate");
+                            faceupArray[0].classList.add("animate");
+                            faceupArray[1].classList.add("animate");
                         }, 1500)
                         setTimeout(function() {
                             faceupArray[0].classList.remove("show");
@@ -65,28 +60,28 @@ allCards.forEach(function(card) {
                         counter++
                         cardCounter.push(counter);
                         setTimeout(function() {
-                        faceupArray[0].classList.remove("open");
-                        faceupArray[0].classList.remove("show");
-                        faceupArray[1].classList.remove("open");
-                        faceupArray[1].classList.remove("show");
-                        faceupArray[0].classList.add("complete");
-                        faceupArray[0].classList.add("match");
-                        faceupArray[1].classList.add("complete");
-                        faceupArray[1].classList.add("match");
-                        faceupArray[0].classList.add("animation");
-                        faceupArray[1].classList.add("animation");
-                        numberOfMoves++
-                        moves.innerHTML = numberOfMoves;
-                        stars();
-                        plural();
-                      }, 1000);
+                            faceupArray[0].classList.remove("open");
+                            faceupArray[0].classList.remove("show");
+                            faceupArray[1].classList.remove("open");
+                            faceupArray[1].classList.remove("show");
+                            faceupArray[0].classList.add("complete");
+                            faceupArray[0].classList.add("match");
+                            faceupArray[1].classList.add("complete");
+                            faceupArray[1].classList.add("match");
+                            faceupArray[0].classList.add("animation");
+                            faceupArray[1].classList.add("animation");
+                            numberOfMoves++
+                            moves.innerHTML = numberOfMoves;
+                            stars();
+                            plural();
+                        }, 1000);
                         setTimeout(function() {
-                          faceupArray[0].classList.add("deanimation");
-                          faceupArray[1].classList.add("deanimation");
-                          faceupArray[0].classList.remove("animation");
-                          faceupArray[1].classList.remove("animation");
-                          faceupArray = [];
-                          currentFaceupCards = 0;
+                            faceupArray[0].classList.add("deanimation");
+                            faceupArray[1].classList.add("deanimation");
+                            faceupArray[0].classList.remove("animation");
+                            faceupArray[1].classList.remove("animation");
+                            faceupArray = [];
+                            currentFaceupCards = 0;
                         }, 1750);
                     }
                 }
@@ -106,10 +101,11 @@ HTMLarray.addEventListener("click", function() {
     let interval;
 
     beginTimer.addEventListener('click', function() {
-      if (seconds === 00 || seconds == '00') {
-        clearInterval(interval);
-        interval = setInterval(startClock, 1000);
-    }});
+        if (seconds === 00 || seconds == '00') {
+            clearInterval(interval);
+            interval = setInterval(startClock, 1000);
+        }
+    });
     document.addEventListener('click', function() {
         if (cardCounter.length === 8) {
             clearInterval(interval);
@@ -141,7 +137,9 @@ HTMLarray.addEventListener("click", function() {
             minutesHTML.innerHTML = minutes;
         }
     }
-}, {once:true});
+}, {
+    once: true
+});
 // shuffle function
 function shuffle(HTMLarray) {
     for (i = HTMLarray.children.length; i >= 0; i--) {
@@ -156,9 +154,9 @@ function youDidIt() {
 
 HTMLarray.addEventListener('click', function(e) {
     if (cardCounter.length === 8) {
-        setTimeout(function () {
-          youDidIt();
-          cardCounter = 0;
+        setTimeout(function() {
+            youDidIt();
+            cardCounter = 0;
         }, 2500);
 
     }
