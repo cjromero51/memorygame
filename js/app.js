@@ -96,7 +96,7 @@ allCards.forEach(function(card) {
 });
 
 // timer
-document.onload = function() {
+HTMLarray.addEventListener("click", function() {
     let seconds = 00;
     let minutes = 00;
     let secondsHTML = document.getElementById('seconds');
@@ -140,7 +140,7 @@ document.onload = function() {
             minutesHTML.innerHTML = minutes;
         }
     }
-};
+}, {once:true});
 // shuffle function
 function shuffle(HTMLarray) {
     for (i = HTMLarray.children.length; i >= 0; i--) {
