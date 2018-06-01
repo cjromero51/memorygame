@@ -105,29 +105,29 @@ HTMLarray.addEventListener("click", function() {
     const resetTimer = document.getElementById('restartButton');
     let interval;
 
-    beginTimer.onclick = function() {
+    beginTimer.addEventListener('click', function() {
         clearInterval(interval);
         interval = setInterval(startClock, 1000);
-    }
+    });
     document.addEventListener('click', function() {
         if (cardCounter.length === 8) {
             clearInterval(interval);
         }
     });
-    resetTimer.onclick = function() {
+    resetTimer.addEventListener('click', function() {
         clearInterval(interval);
         seconds = '00';
         minutes = '00';
         secondsHTML.innerHTML = seconds;
         minutesHTML.innerHTML = minutes;
-    }
+    });
 
     function startClock() {
         seconds++;
         if (seconds < 10) {
             secondsHTML.innerHTML = '0' + seconds;
         }
-        if (seconds > 10) {
+        if (seconds > 9) {
             secondsHTML.innerHTML = seconds;
         }
         if (seconds > 59) {
