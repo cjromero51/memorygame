@@ -96,7 +96,7 @@ allCards.forEach(function(card) {
 });
 
 // timer
-window.onload = function() {
+document.onload = function() {
     let seconds = 00;
     let minutes = 00;
     let secondsHTML = document.getElementById('seconds');
