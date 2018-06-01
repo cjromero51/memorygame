@@ -106,9 +106,10 @@ HTMLarray.addEventListener("click", function() {
     let interval;
 
     beginTimer.addEventListener('click', function() {
+      if (seconds === 00 || seconds == '00') {
         clearInterval(interval);
         interval = setInterval(startClock, 1000);
-    });
+    }});
     document.addEventListener('click', function() {
         if (cardCounter.length === 8) {
             clearInterval(interval);
