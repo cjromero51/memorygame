@@ -63,6 +63,8 @@ allCards.forEach(function(card) {
                             currentFaceupCards = 0;
                         }, 1800);
                     } else {
+                        counter++
+                        cardCounter.push(counter);
                         setTimeout(function() {
                         faceupArray[0].classList.remove("open");
                         faceupArray[0].classList.remove("show");
@@ -76,8 +78,6 @@ allCards.forEach(function(card) {
                         faceupArray[1].classList.add("animation");
                         numberOfMoves++
                         moves.innerHTML = numberOfMoves;
-                        cardCounter.push(counter);
-                        counter++
                         stars();
                         plural();
                       }, 1000);
@@ -154,10 +154,10 @@ function youDidIt() {
     alert('You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!');
 };
 
-document.addEventListener('click', function(e) {
+HTMLarray.addEventListener('click', function(e) {
     if (cardCounter.length === 8) {
         cardCounter = 0;
-        setTimeout(youDidIt, 1000);
+        setTimeout(youDidIt, 2500);
 
     }
 });
