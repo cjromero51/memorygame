@@ -21,9 +21,9 @@ allCards.forEach(function(card) {
     card.addEventListener("click", function() {
         if (currentFaceupCards < 2) {
             if (
-                (card.classList.contains("open") &&
-                    card.classList.contains("show") &&
-                    card.classList.contains("match")) == false
+                card.classList.contains("open") == false &&
+                    card.classList.contains("show") == false &&
+                    card.classList.contains("match") == false
             ) {
                 currentFaceupCards++;
                 card.classList.add("open", "show");
