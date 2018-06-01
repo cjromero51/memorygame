@@ -31,10 +31,9 @@ allCards.forEach(function(card) {
                 //if they Match or not
                 if (currentFaceupCards === 2) {
                     if (faceupArray[0] == faceupArray[1]) {
-                        faceupArray[0].classList.remove("open", "show");
-                        faceupArray[1].classList.remove("open", "show");
-                        faceupArray = [];
-                        currentFaceupCards = 0;
+                        alert("You can't click the same card twice!")
+                        faceupArray.pop(0);
+                        currentFaceupCards = 1;
                     } else if (
                         (faceupArray[0].querySelector("i").classList.value ==
                             faceupArray[1].querySelector("i").classList.value) ==
