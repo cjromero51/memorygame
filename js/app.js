@@ -196,7 +196,7 @@ function plural() {
 };
 //removes stars based on numberOfMoves
 function stars() {
-    if (numberOfMoves === 4) {
+    if (numberOfMoves === 14) {
         star[2].style.color = '#ccc';
     }
     if (numberOfMoves === 22) {
