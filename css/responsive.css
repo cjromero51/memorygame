@@ -1,4 +1,7 @@
-@media screen and (max-width:500px) {
+@media screen and (max-width:750px) {
+  .container {
+    max-width: 100%;
+  }
   section.score-panel {
     width: 80%;
   }
@@ -6,7 +9,6 @@
     width:90%;
   }
   li.card {
-    max-width: 22.5%;
-    max-height: 22.5%;
+    max-width: 24%;
   }
 }
