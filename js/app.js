@@ -12,6 +12,7 @@ let star = document.getElementsByClassName("fa fa-star");
 let cardCounter = [];
 let counter = 0;
 let timeouts = [];
+let starArray = [];
 
 allCards.forEach(function(card) {
     card.addEventListener("click", function() {
@@ -150,7 +151,7 @@ function shuffle(HTMLarray) {
 
 // game completed alert function and event listener
 function youDidIt() {
-    alert('You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!');
+    alert('You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!' + starMessage());
 };
 
 HTMLarray.addEventListener('click', function(e) {
@@ -172,6 +173,7 @@ document.getElementById('restartButton').addEventListener('click', function(e) {
     for (var i = 0; i < timeouts.length; i++) {
       clearTimeout(timeouts[i]);
     }
+    starArray = [];
     faceupArray = [];
     currentFaceupCards = 0;
     numberOfMoves = 0;
@@ -194,10 +196,22 @@ function plural() {
 };
 //removes stars based on numberOfMoves
 function stars() {
-    if (numberOfMoves === 14) {
+    if (numberOfMoves === 4) {
         star[2].style.color = '#ccc';
     }
     if (numberOfMoves === 22) {
         star[1].style.color = '#ccc';
     }
+}
+function starMessage() {
+  for (i = 0; i < 3; i++) {
+    if (star[i].style.color =='black') {
+      starArray.push(i);
+    }
+  }
+  if (starArray.length === 1) {
+    return('You scored 1 star!');
+  }else{
+    return(' You scored ' + starArray.length + ' stars!');
+  }
 }
