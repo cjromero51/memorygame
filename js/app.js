@@ -120,7 +120,7 @@ HTMLarray.addEventListener("click", function() {
         secondsHTML.innerHTML = seconds;
         minutesHTML.innerHTML = minutes;
     });
-
+//starts the timer
     function startClock() {
         seconds++;
         if (seconds < 10) {
@@ -151,7 +151,7 @@ function shuffle(HTMLarray) {
 
 // game completed alert function and event listener
 function youDidIt() {
-    alert('You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!' + starMessage());
+    swal(starMessage(),'You did it in ' + numberOfMoves + ' moves using ' + document.getElementById('minutes').innerHTML + ':' + document.getElementById('seconds').innerHTML + '!');
 };
 
 HTMLarray.addEventListener('click', function(e) {
@@ -212,6 +212,6 @@ function starMessage() {
   if (starArray.length === 1) {
     return('You scored 1 star!');
   }else{
-    return(' You scored ' + starArray.length + ' stars!');
+    return('You scored ' + starArray.length + ' stars!');
   }
 }
